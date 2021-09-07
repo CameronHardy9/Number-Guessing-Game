@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+    <title>Deja Vue (DOM)</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+        <div class="prompt">Enter your first name to begin playing!</div>
+        <div class="info" hidden></div>
+        <div class="error" style="color: red" hidden>*Please type your first name</div>
+        <select name="difficulty" id="difficulty" hidden>
+            <option value="10" selected>Easy</option>
+            <option value="100">Medium</option>
+            <option value="1000">Hard</option>
+        </select>
+        <input type="text" name="guess" class="input" placeholder="John" required>
+        <button type="submit" class="button">Begin</button>
+    </div>
+</body>
+</html>

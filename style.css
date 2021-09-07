@@ -1,0 +1,62 @@
+:root {
+    --mono-blue1: #C8DAE1;
+    --mono-blue2: #81C2DB;
+    --mono-blue3: #6395A8;
+    --mono-blue4: #446673;
+    --mono-blue5: #52595C;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--mono-blue4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 400px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: var(--mono-blue1);
+    box-shadow: 0px 5px 5px black;
+}
+
+.prompt {
+    margin-bottom: 10px;
+}
+
+#difficulty {
+    margin: 20px 0px;
+    width: 90px;
+    height: 30px;
+    font-size: large;
+}
+
+.input {
+    margin: 10px 0px;
+    width: 120px;
+    height: 30px;
+    font-size: large;
+}
+
+.button {
+    width: 100px;
+    height: 40px;
+    background-color: var(--mono-blue5);
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    margin-top: 10px;
+}
