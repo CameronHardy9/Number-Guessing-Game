@@ -40,6 +40,9 @@ class GuessGame {
         prompt.textContent = `Hi, ${this.name}! Please select your difficulty.`
         button.disabled = false;
         button.onclick = () => {
+            input.disabled = false;
+            this.count = Math.ceil(Math.log2(difficulty.value));
+            this.updateCount();
             this.mode = Number(difficulty.value);
             input.placeholder = `1 - ${this.mode}`;
             button.textContent = "Guess";
@@ -48,13 +51,12 @@ class GuessGame {
         };
     }
     gameStart() {
+        container.style.boxShadow = "0px 5px 5px black";
         input.setAttribute("type", "number");
         input.min = "1";
         input.max = `${this.mode}`;
         prompt.textContent = `Guess a number between 1 and ${this.mode}!`
         this.rand = Math.floor(Math.random() * this.mode + 1);
-        this.count = 7;
-        info.textContent = `Guesses remaining: ${this.count}`;
         info.hidden = false;
         input.hidden = false;
         button.onclick = () => {
@@ -62,25 +64,51 @@ class GuessGame {
         };
     }
     guess(guess) {
-        console.log(guess);
+        this.count --;
+        this.updateCount();
+        input.value = "";
         if(guess == this.rand) {
-            input.value = "";
             this.right();
         } else {
-            input.value = "";
-            this.wrong();
+            this.wrong(guess);
         }
     }
     right() {
-        console.log("right");
-        container.style.boxShadow = "0px 5px 5px lightgreen"
+        container.style.boxShadow = "0px 5px 5px lightgreen";
+        prompt.textContent = "Congratulations!!! You guessed the number correctly!";
+        button.textContent = "Play again";
+        button.onclick = () => {
+            this.diffSelect();
+        }
     }
-    wrong() {
-        console.log("wrong");
-        container.style.boxShadow = "0px 5px 5px red"
+    wrong(guess) {
+        let highLow = null;
+        container.style.boxShadow = "0px 5px 5px red";
+        if (this.count == 0) {
+            this.lose();
+        } else {
+            if (guess > this.rand) {
+                highLow = "high";
+            } else {
+                highLow = "low";
+            }
+            prompt.textContent = `That guess was too ${highLow}.`
+            button.onclick = () => {
+                this.guess(input.value);
+            }
+        }
+        
     }
-    replay() {
-
+    lose() {
+        prompt.textContent = `Sorry! The number was ${this.rand}.`;
+        input.disabled = true;
+        button.textContent = "Try again";
+        button.onclick = () => {
+            this.diffSelect();
+        }
+    }
+    updateCount() {
+        info.textContent = `Guesses remaining: ${this.count}`;
     }
 }
 
