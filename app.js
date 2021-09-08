@@ -14,6 +14,10 @@ window.addEventListener("keyup",(e) => {
     }
 })
 
+window.onload = () => {
+    input.focus();
+}
+
 button.onclick = () => {
     if (!input.value) {
         error.hidden = false;

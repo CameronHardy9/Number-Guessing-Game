@@ -14,7 +14,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--mono-blue4);
+    background-image: url(./assets/numbers.jpg);
     display: flex;
     justify-content: center;
     align-items: center;
