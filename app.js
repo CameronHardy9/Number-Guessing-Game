@@ -1,6 +1,7 @@
 "use strict";
 
 const button = document.querySelector(".button");
+const container = document.querySelector(".container");
 const input = document.querySelector(".input");
 const prompt = document.querySelector(".prompt");
 const difficulty = document.getElementById("difficulty");
@@ -47,29 +48,41 @@ class GuessGame {
         };
     }
     gameStart() {
+        input.setAttribute("type", "number");
+        input.min = "1";
+        input.max = `${this.mode}`;
         prompt.textContent = `Guess a number between 1 and ${this.mode}!`
         this.rand = Math.floor(Math.random() * this.mode + 1);
         this.count = 7;
         info.textContent = `Guesses remaining: ${this.count}`;
         info.hidden = false;
         input.hidden = false;
-
+        button.onclick = () => {
+            this.guess(input.value);
+        };
     }
-    guess() {
-
+    guess(guess) {
+        console.log(guess);
+        if(guess == this.rand) {
+            input.value = "";
+            this.right();
+        } else {
+            input.value = "";
+            this.wrong();
+        }
     }
     right() {
-
+        console.log("right");
+        container.style.boxShadow = "0px 5px 5px lightgreen"
     }
     wrong() {
-
+        console.log("wrong");
+        container.style.boxShadow = "0px 5px 5px red"
     }
     replay() {
 
     }
 }
-
-
 
 
 
